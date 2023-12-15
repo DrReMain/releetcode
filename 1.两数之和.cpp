@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode.cn id=1 lang=cpp
+ *
+ * [1] 两数之和
+ */
+
+// @lc code=start
 #include <vector>
 #include <unordered_map>
 using namespace std;
@@ -21,3 +28,4 @@ public:
         return {};
     }
 };
+// @lc code=end

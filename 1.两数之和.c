@@ -1,4 +1,14 @@
-#include "../include/uthash.h"
+/*
+ * @lc app=leetcode.cn id=1 lang=c
+ *
+ * [1] 两数之和
+ */
+
+// @lc code=start
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+#include <uthash.h>
 
 struct hashTable
 {
@@ -34,7 +44,7 @@ void insert(int ikey, int ival)
 int *twoSum(int *nums, int numsSize, int target, int *returnSize)
 {
     hashtable = NULL;
-    for (int i = 0; i < numsSize; ++i)
+    for (int i = 0; i < numsSize; i++)
     {
         struct hashTable *it = find(target - nums[i]);
         if (it != NULL)
@@ -46,7 +56,8 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize)
         }
         insert(nums[i], i);
     }
-
     *returnSize = 0;
     return NULL;
 }
+
+// @lc code=end
