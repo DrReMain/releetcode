@@ -6,24 +6,19 @@
 
 // @lc code=start
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	for p1, p2, tail := m-1, n-1, m+n-1; p1 >= 0 || p2 >= 0; tail-- {
-		var cur int
-
-		if p1 == -1 {
-			cur = nums2[p2]
-			p2--
-		} else if p2 == -1 {
-			cur = nums1[p1]
-			p1--
-		} else if nums1[p1] > nums2[p2] {
-			cur = nums1[p1]
-			p1--
+	p, x, y := len(nums1) - 1, m - 1, n - 1
+	for x >= 0 && y >= 0 {
+		if nums1[x] < nums2[y] {
+			nums1[p] = nums2[y]
+			y--
 		} else {
-			cur = nums2[p2]
-			p2--
+			nums1[p] = nums1[x]
+			x--
 		}
-
-		nums1[tail] = cur
+		p--
+	}
+	for i := 0; i <= y; i++ {
+		nums1[i] = nums2[i]
 	}
 }
 
