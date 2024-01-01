@@ -7,7 +7,6 @@
 // @lc code=start
 function letterCombinations(digits: string): string[] {
     if (digits.length === 0) return [];
-    
     const m = new Map<string, string[]>([
         ["2", ["a", "b", "c"]],
         ["3", ["d", "e", "f"]],
@@ -18,21 +17,34 @@ function letterCombinations(digits: string): string[] {
         ["8", ["t", "u", "v"]],
         ["9", ["w", "x", "y", "z"]],
     ]);
-    const ret: string[] = [];
-    function recur(s: string[], idx: number) {
-        if (s.length === digits.length) {
-            ret.push(s.join(""));
-            return;
-        }
-        if (idx < digits.length) {
-            const charList = m.get(digits[idx]);
-            for (let i = 0; charList?.length && i < charList.length; ++i) {
-                recur(s.concat(charList[i]), idx+1);
-            }
-        }
-    }
-    recur([], 0);
-    return ret;
+    // const ret: string[] = [];
+    // function recur(s: string[], idx: number) {
+    //     if (s.length === digits.length) {
+    //         ret.push(s.join(""));
+    //         return;
+    //     }
+    //     if (idx < digits.length) {
+    //         const charList = m.get(digits[idx]);
+    //         for (let i = 0; charList?.length && i < charList.length; ++i) {
+    //             recur(s.concat(charList[i]), idx+1);
+    //         }
+    //     }
+    // }
+    // recur([], 0);
+    // return ret;
+
+    return digits
+        .split("")
+        .reduce<string[]>((acc, currDigit) => {
+            const letters = m.get(currDigit) || [];
+            const combinations: string[] = [];
+            acc.forEach(lhs => {
+                letters.forEach(rhs => {
+                    combinations.push(lhs + rhs);
+                });
+            });
+            return combinations;
+        }, ['']);
 };
 // @lc code=end
 
