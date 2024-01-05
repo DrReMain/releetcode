@@ -6,16 +6,14 @@
 
 // @lc code=start
 func maxArea(height []int) (cap int) {
-	length := len(height)
-	i, j := 0, length-1
-	for i < j {
-		area := min(height[i], height[j]) * (j - i)
+	left, right := 0, len(height) - 1
+	for left < right {
+		area := min(height[left], height[right]) * (right-left)
 		cap = max(cap, area)
-
-		if height[i] < height[j] {
-			i++
+		if height[left] < height[right] {
+			left++
 		} else {
-			j--
+			right--
 		}
 	}
 	return

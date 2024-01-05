@@ -7,20 +7,18 @@
 // @lc code=start
 impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {
-        let length = height.len();
-        let (mut i, mut j) = (0, length - 1);
-        let mut cap = 0;
-        while i < j {
-            let area = (height[i].min(height[j])) * (j - i) as i32;
-            cap = cap.max(area);
-
-            if height[i] < height[j] {
-                i += 1;
+        let mut ret = 0;
+        let (mut left, mut right) = (0i32, height.len() as i32 - 1);
+        while left < right {
+            let area = height[left as usize].min(height[right as usize]) * (right-left);
+            ret = ret.max(area);
+            if height[left as usize] < height[right as usize] {
+                left += 1;
             } else {
-                j -= 1;
+                right -= 1;
             }
         }
-        cap
+        ret
     }
 }
 // @lc code=end
