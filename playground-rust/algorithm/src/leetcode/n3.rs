@@ -28,11 +28,15 @@ mod tests {
     use test::Bencher;
 
     #[test]
-    fn test_length_of_longest_substring() {
+    fn test_length_of_longest_substring1() {
         assert_eq!(
             Solution::length_of_longest_substring(String::from("abcabcbb")),
             3
         );
+    }
+
+    #[test]
+    fn test_length_of_longest_substring2() {
         assert_eq!(
             Solution::length_of_longest_substring(String::from("bbbbb")),
             1

@@ -4,19 +4,21 @@ import (
 	"testing"
 )
 
-func TestLengthOfLongestSubstring(t *testing.T) {
-	input1 := "abcabcbb"
-	expected1 := 3
-	result1 := lengthOfLongestSubstring(input1)
-	if result1 != expected1 {
-		t.Errorf("Expected %d, but got %d for input %s", expected1, result1, input1)
+func TestLengthOfLongestSubstring1(t *testing.T) {
+	input := "abcabcbb"
+	expected := 3
+	result := lengthOfLongestSubstring(input)
+	if result != expected {
+		t.Errorf("Expected %d, but got %d for input %s", expected, result, input)
 	}
+}
 
-	input2 := "bbbbb"
-	expected2 := 1
-	result2 := lengthOfLongestSubstring(input2)
-	if result2 != expected2 {
-		t.Errorf("Expected %d, but got %d for input %s", expected2, result2, input2)
+func TestLengthOfLongestSubstring2(t *testing.T) {
+	input := "bbbbb"
+	expected := 1
+	result := lengthOfLongestSubstring(input)
+	if result != expected {
+		t.Errorf("Expected %d, but got %d for input %s", expected, result, input)
 	}
 }
 
