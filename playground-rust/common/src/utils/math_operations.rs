@@ -1,0 +1,19 @@
+pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+pub fn subtract(a: i32, b: i32) -> i32 {
+    a - b
+}
+
+pub fn multiply(a: i32, b: i32) -> i32 {
+    a * b
+}
+
+pub fn divide(a: i32, b: i32) -> Option<f32> {
+    if b != 0 {
+        Some(a as f32 / b as f32)
+    } else {
+        None
+    }
+}
