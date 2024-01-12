@@ -23,44 +23,20 @@ mod tests {
 
     #[test]
     fn test_reverse_list() {
-        let input1 = Some(Box::new(ListNode {
-            val: 1,
-            next: Some(Box::new(ListNode {
-                val: 2,
-                next: Some(Box::new(ListNode { val: 3, next: None })),
-            })),
-        }));
-        let expected1 = Some(Box::new(ListNode {
-            val: 3,
-            next: Some(Box::new(ListNode {
-                val: 2,
-                next: Some(Box::new(ListNode { val: 1, next: None })),
-            })),
-        }));
+        let input1 = ListNode::from(vec![1, 2, 3]);
+        let expected1 = ListNode::from(vec![3, 2, 1]);
         let result1 = Solution::reverse_list(input1);
         assert_eq!(result1, expected1);
 
-        let input2 = Some(Box::new(ListNode {
-            val: 1,
-            next: Some(Box::new(ListNode { val: 2, next: None })),
-        }));
-        let expected2 = Some(Box::new(ListNode {
-            val: 2,
-            next: Some(Box::new(ListNode { val: 1, next: None })),
-        }));
+        let input2 = ListNode::from(vec![1, 2]);
+        let expected2 = ListNode::from(vec![2, 1]);
         let result2 = Solution::reverse_list(input2);
         assert_eq!(result2, expected2);
     }
 
     #[bench]
     fn bench_reverse_list(b: &mut Bencher) {
-        let input = Some(Box::new(ListNode {
-            val: 1,
-            next: Some(Box::new(ListNode {
-                val: 2,
-                next: Some(Box::new(ListNode { val: 3, next: None })),
-            })),
-        }));
+        let input = ListNode::from(vec![1, 2, 3]);
         b.iter(|| Solution::reverse_list(input.clone()));
     }
 }

@@ -2,7 +2,7 @@ package n572
 
 import "drremain.cn/playground-golang/DataStructure"
 
-type TreeNode = DataStructure.TreeNode[int]
+type TreeNode = DataStructure.TreeNode
 
 func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
 	if root == nil {

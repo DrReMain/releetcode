@@ -4,7 +4,7 @@ import (
 	"drremain.cn/playground-golang/DataStructure"
 )
 
-type ListNode = DataStructure.ListNode[int]
+type ListNode = DataStructure.ListNode
 
 func reverseList(head *ListNode) *ListNode {
 	var prev *ListNode
