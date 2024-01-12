@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies]
 leetcode-common = { path = "../common" }
+
+[dev-dependencies]
+pretty_assertions = "1.4"
