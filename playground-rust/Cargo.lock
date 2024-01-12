@@ -5,6 +5,9 @@ version = 3
 [[package]]
 name = "algorithm"
 version = "0.1.0"
+dependencies = [
+ "leetcode-common",
+]
 
 [[package]]
 name = "leetcode-common"
