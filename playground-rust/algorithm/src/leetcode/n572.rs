@@ -20,7 +20,6 @@ impl Solution {
     pub fn check(t1: Option<Rc<RefCell<TreeNode>>>, t2: Option<Rc<RefCell<TreeNode>>>) -> bool {
         match (t1, t2) {
             (None, None) => true,
-            (Some(_), None) | (None, Some(_)) => false,
             (Some(n1), Some(n2)) => {
                 let (b1, b2) = (n1.borrow(), n2.borrow());
                 if b1.val == b2.val {
@@ -30,6 +29,7 @@ impl Solution {
                     false
                 }
             }
+            _ => false,
         }
     }
 }
