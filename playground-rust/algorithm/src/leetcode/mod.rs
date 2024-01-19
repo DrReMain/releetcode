@@ -19,3 +19,4 @@ pub mod n338;
 pub mod n415;
 pub mod n538;
 pub mod n572;
+pub mod n695;
