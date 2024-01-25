@@ -15,6 +15,7 @@ pub mod n129;
 pub mod n165;
 pub mod n200;
 pub mod n206;
+pub mod n250;
 pub mod n338;
 pub mod n238;
 pub mod n415;
