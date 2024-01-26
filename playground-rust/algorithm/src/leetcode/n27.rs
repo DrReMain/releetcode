@@ -22,25 +22,19 @@ mod tests {
     fn test_remove_element1() {
         let mut nums = vec![3, 2, 2, 3];
         let val = 3;
-        assert_eq!(
-            Solution::remove_element(&mut nums, val),
-            2
-        );
+        assert_eq!(Solution::remove_element(&mut nums, val), 2);
     }
 
     #[test]
     fn test_remove_element2() {
         let mut nums = vec![0, 1, 2, 2, 3, 0, 4, 2];
         let val = 2;
-        assert_eq!(
-            Solution::remove_element(&mut nums, val),
-            5
-        );
+        assert_eq!(Solution::remove_element(&mut nums, val), 5);
     }
 
     #[bench]
     fn bench_remove_element(b: &mut Bencher) {
-        let mut nums = vec![3, 2, 2, 3];
+        let nums = vec![3, 2, 2, 3];
         let val = 3;
         b.iter(|| Solution::remove_element(&mut nums.clone(), val));
     }
