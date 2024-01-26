@@ -2,6 +2,7 @@ pub mod n3;
 pub mod n5;
 pub mod n15;
 pub mod n20;
+pub mod n27;
 pub mod n42;
 pub mod n46;
 pub mod n53;
