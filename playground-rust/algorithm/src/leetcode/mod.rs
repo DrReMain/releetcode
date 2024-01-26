@@ -9,6 +9,7 @@ pub mod n53;
 pub mod n54;
 pub mod n59;
 pub mod n64;
+pub mod n82;
 pub mod n88;
 pub mod n102;
 pub mod n112;
