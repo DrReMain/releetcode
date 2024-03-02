@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=101 lang=typescript
+ * @lc app=leetcode.cn id=104 lang=typescript
  *
- * [101] 对称二叉树
+ * [104] 二叉树的最大深度
  */
 
 // @lc code=start
@@ -19,14 +19,9 @@
  * }
  */
 
-function isSymmetric(root: TreeNode | null): boolean {
-    if (!root) return true;
-    return dfs(root.left, root.right);
+function maxDepth(root: TreeNode | null): number {
+    return root ? Math.max(maxDepth(root.left), maxDepth(root.right)) + 1
+                : 0;
 };
-function dfs(left: TreeNode | null, right: TreeNode | null): boolean {
-    if (!left && !right) return true;
-    if (!left || !right) return false;
-    return left.val === right.val && dfs(left.left, right.right) && dfs(left.right, right.left);
-}
 // @lc code=end
 

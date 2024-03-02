@@ -22,22 +22,32 @@
 function zigzagLevelOrder(root: TreeNode | null): number[][] {
     const ret: number[][] = [];
     if (!root) return ret;
-    let queue = [root];
-    let flag = true;
 
-    while (queue.length > 0) {
-        const len = queue.length;
+    let q = [root];
+    let isOddLevel = true;
+
+    while (q.length) {
         const level: number[] = [];
-        for (let i = 0; i < len; i++) {
-            const node = flag ? queue[i] : queue[len - 1 - i];
-            level.push(node.val);
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
-        }
+        const newQ: TreeNode[] = [];
+
+        if (isOddLevel)
+            for (let i = 0; i < q.length; ++i) {
+                const node = q[i];
+                level.push(node.val);
+                if (node.left) newQ.push(node.left);
+                if (node.right) newQ.push(node.right);
+            }
+        else
+            for (let i = q.length-1; i >= 0; --i) {
+                const node = q[i];
+                level.push(node.val);
+                if (node.right) newQ.unshift(node.right);
+                if (node.left) newQ.unshift(node.left);
+            }
+
         ret.push(level);
-        queue = queue.slice(len);
-        
-        flag = !flag;
+        q = newQ;
+        isOddLevel = !isOddLevel;
     }
     return ret;
 };
