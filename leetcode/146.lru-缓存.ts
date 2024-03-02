@@ -15,13 +15,13 @@ class Dln {
 }
 class LRUCache {
     size: number;
-    capacity: number;
+    cap: number;
     cache: Record<number, Dln>;
     head: Dln;
     tail: Dln;
-    constructor(capacity: number) {
+    constructor(cap: number) {
         this.size = 0;
-        this.capacity = capacity;
+        this.cap = cap;
         this.cache = {};
         this.head = new Dln(0, 0);
         this.tail = new Dln(0, 0);
@@ -30,7 +30,7 @@ class LRUCache {
     }
     get(key: number): number {
         const node = this.cache[key];
-        if (!node) return -1;
+        if(!node) return -1;
         this.moveToHead(node);
         return node.value;
     }
@@ -38,9 +38,9 @@ class LRUCache {
         if (!this.cache[key]) {
             const node = new Dln(key, value);
             this.cache[key] = node;
-            this.addToHead(node);
+            this.addTohead(node);
             this.size++;
-            if (this.size > this.capacity) {
+            if (this.size > this.cap) {
                 const removed = this.removeTail();
                 delete this.cache[removed.key];
                 this.size--;
@@ -51,7 +51,7 @@ class LRUCache {
             this.moveToHead(node);
         }
     }
-    addToHead(node: Dln): void {
+    addTohead(node: Dln): void {
         node.prev = this.head;
         node.next = this.head.next;
         this.head.next!.prev = node;
@@ -61,15 +61,16 @@ class LRUCache {
         node.prev!.next = node.next;
         node.next!.prev = node.prev;
     }
-    moveToHead(node: Dln): void {
-        this.removeNode(node);
-        this.addToHead(node);
-    }
     removeTail(): Dln {
         const node = this.tail.prev!;
         this.removeNode(node);
         return node;
     }
+    moveToHead(node: Dln): void {
+        this.removeNode(node);
+        this.addTohead(node);
+    }
+
 }
 
 /**
