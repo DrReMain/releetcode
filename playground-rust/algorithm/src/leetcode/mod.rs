@@ -14,6 +14,7 @@ pub mod n64;
 pub mod n82;
 pub mod n88;
 pub mod n102;
+pub mod n104;
 pub mod n112;
 pub mod n121;
 pub mod n129;
