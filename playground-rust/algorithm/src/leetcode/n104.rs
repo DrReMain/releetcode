@@ -23,7 +23,7 @@ mod tests {
     use test::Bencher;
 
     #[test]
-    fn test_level_order1() {
+    fn test_max_depth1() {
         let root = TreeNode::from(vec![
             Some(3),
             Some(9),
@@ -38,14 +38,14 @@ mod tests {
     }
 
     #[test]
-    fn test_level_order2() {
+    fn test_max_depth2() {
         let root = TreeNode::from(vec![Some(1), None, Some(2)]);
         let expected = 2;
         assert_eq!(Solution::max_depth(root), expected);
     }
 
     #[bench]
-    fn bench_level_order(b: &mut Bencher) {
+    fn bench_max_depth(b: &mut Bencher) {
         let root = TreeNode::from(vec![
             Some(3),
             Some(9),

@@ -6,10 +6,7 @@
 
 // @lc code=start
 function findPeakElement(nums: number[]): number {
-    let idx = 0;
-    for (let i = 0; i < nums.length; ++i)
-        if (nums[i] > nums[idx]) idx = i;
-    return idx;
+    return nums.reduce<number>((ret, next, idx) => next > nums[ret] ? idx : ret, 0);
 };
 // @lc code=end
 

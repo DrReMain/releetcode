@@ -39,28 +39,28 @@ mod tests {
     use test::Bencher;
 
     #[test]
-    fn test_trap1() {
+    fn test_longest_valid_parentheses1() {
         let s = String::from("(()");
         let expected = 2;
         assert_eq!(Solution::longest_valid_parentheses(s), expected);
     }
 
     #[test]
-    fn test_trap2() {
+    fn test_longest_valid_parentheses2() {
         let s = String::from(")()())");
         let expected = 4;
         assert_eq!(Solution::longest_valid_parentheses(s), expected);
     }
 
     #[test]
-    fn test_trap3() {
+    fn test_longest_valid_parentheses3() {
         let s = String::from("");
         let expected = 0;
         assert_eq!(Solution::longest_valid_parentheses(s), expected);
     }
 
     #[bench]
-    fn bench_trap(b: &mut Bencher) {
+    fn bench_longest_valid_parentheses(b: &mut Bencher) {
         let s = String::from("(()");
         b.iter(|| Solution::longest_valid_parentheses(s.clone()));
     }
