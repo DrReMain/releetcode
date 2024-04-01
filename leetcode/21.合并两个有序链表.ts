@@ -18,22 +18,21 @@
  */
 
 function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
-    const dummyHead = new ListNode();
-    let curr = dummyHead;
-    while(list1 && list2) {
+    const dummy = new ListNode(0, null);
+    let node = dummy;
+    while (list1 && list2) {
         if (list1.val < list2.val) {
-            curr.next = list1;
+            node.next = list1;
             list1 = list1.next;
         } else {
-            curr.next = list2;
+            node.next = list2;
             list2 = list2.next;
         }
-        curr = curr.next;
+        node = node.next;
     }
-    if (list1) curr.next = list1;
-    if (list2) curr.next = list2;
-
-    return dummyHead.next;
+    if (list1) node.next = list1;
+    if (list2) node.next = list2;
+    return dummy.next;
 };
 // @lc code=end
 

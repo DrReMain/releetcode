@@ -7,15 +7,15 @@
 // @lc code=start
 function generateParenthesis(n: number): string[] {
     const ret: string[] = [];
-    function backtrack(s: string[], left: number, right: number) {
-        if (s.length === n * 2) {
-            ret.push(s.join(""));
+    function backtrack(path: string, left: number, right: number) {
+        if (path.length === n * 2) {
+            ret.push(path);
             return;
         }
-        if (left < n) backtrack([...s, "("], left + 1, right);
-        if (right < left) backtrack([...s, ")"], left, right + 1);
+        if (left < n) backtrack(path+"(", left + 1, right);
+        if (right < left) backtrack(path+")", left, right + 1);
     }
-    backtrack([], 0, 0);
+    backtrack("", 0, 0);
     return ret;
 };
 // @lc code=end

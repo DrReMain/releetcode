@@ -24,13 +24,11 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
     if (!root) return ret;
 
     let q = [root];
-    let isOddLevel = true;
-
+    let flag = true;
     while (q.length) {
         const level: number[] = [];
         const newQ: TreeNode[] = [];
-
-        if (isOddLevel)
+        if (flag)
             for (let i = 0; i < q.length; ++i) {
                 const node = q[i];
                 level.push(node.val);
@@ -47,7 +45,7 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
         ret.push(level);
         q = newQ;
-        isOddLevel = !isOddLevel;
+        flag = !flag;
     }
     return ret;
 };
