@@ -3,31 +3,38 @@ impl Solution {
     pub fn max_area_of_island(grid: Vec<Vec<i32>>) -> i32 {
         let mut grid = grid;
         let (m, n) = (grid.len(), grid[0].len());
-        let mut ret = 0;
 
+        let mut ret = 0;
         for i in 0..m {
             for j in 0..n {
                 if grid[i][j] == 1 {
-                    ret = ret.max(Self::max_area_of_island_dfs(&mut grid, i as i32, j as i32));
+                    ret = ret.max(Self::max_area_of_island_dfs(&mut grid, i, j));
                 }
             }
         }
-
         ret
     }
-    pub fn max_area_of_island_dfs(grid: &mut Vec<Vec<i32>>, x: i32, y: i32) -> i32 {
-        let (m, n) = (grid.len() as i32, grid[0].len() as i32);
-        let mut area = 0;
-        if x < 0 || y < 0 || x >= m || y >= n || grid[x as usize][y as usize] == 0 {
-            return area;
+    pub fn max_area_of_island_dfs(grid: &mut Vec<Vec<i32>>, x: usize, y: usize) -> i32 {
+        let (m, n) = (grid.len(), grid[0].len());
+
+        if x >= m || y >= n || grid[x][y] == 0 {
+            return 0;
         }
-        grid[x as usize][y as usize] = 0;
-        area += 1;
-        area += Self::max_area_of_island_dfs(grid, x + 1, y);
-        area += Self::max_area_of_island_dfs(grid, x - 1, y);
-        area += Self::max_area_of_island_dfs(grid, x, y + 1);
-        area += Self::max_area_of_island_dfs(grid, x, y - 1);
-        area
+
+        grid[x][y] = 0;
+
+        1 + Self::max_area_of_island_dfs(grid, x + 1, y)
+            + if let Some(n) = x.checked_sub(1) {
+                Self::max_area_of_island_dfs(grid, n, y)
+            } else {
+                0
+            }
+            + Self::max_area_of_island_dfs(grid, x, y + 1)
+            + if let Some(n) = y.checked_sub(1) {
+                Self::max_area_of_island_dfs(grid, x, n)
+            } else {
+                0
+            }
     }
 }
 
