@@ -6,10 +6,10 @@ impl Solution {
         let mut prev: Option<Box<ListNode>> = None;
         let mut node = head;
         while let Some(mut n) = node {
-            let tmp = n.next.take();
+            let next = n.next.take();
             n.next = prev;
             prev = Some(n);
-            node = tmp;
+            node = next;
         }
         prev
     }
