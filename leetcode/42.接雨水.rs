@@ -8,16 +8,17 @@
 impl Solution {
     pub fn trap(height: Vec<i32>) -> i32 {
         let (mut left, mut right) = (0, height.len() - 1);
-        let (mut leftMax, mut rightMax) = (0, 0);
+        let (mut left_max, mut right_max) = (0, 0);
         let mut ret = 0;
         while left < right {
-            leftMax = leftMax.max(height[left]);
-            rightMax = rightMax.max(height[right]);
+            left_max = left_max.max(height[left]);
+            right_max = right_max.max(height[right]);
+            
             if height[left] < height[right] {
-                ret += leftMax - height[left];
+                ret += left_max - height[left];
                 left += 1;
             } else {
-                ret += rightMax - height[right];
+                ret += right_max - height[right];
                 right -= 1;
             }
         }
