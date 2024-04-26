@@ -23,19 +23,21 @@
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn is_subtree(
         root: Option<Rc<RefCell<TreeNode>>>,
         sub_root: Option<Rc<RefCell<TreeNode>>>,
     ) -> bool {
-        if let Some(node) = root {
-            Self::is_subtree_check(Some(node.clone()), sub_root.clone())
-                || Self::is_subtree(node.borrow().left.clone(), sub_root.clone())
-                || Self::is_subtree(node.borrow().right.clone(), sub_root.clone())
-        } else {
-            false
+        match (root, sub_root) {
+            (None, None) => true,
+            (Some(_), None) | (None, Some(_)) => false,
+            (Some(a), Some(b)) => {
+                Self::is_subtree_check(Some(a.clone()), Some(b.clone()))
+                    || Self::is_subtree(a.borrow().left.clone(), Some(b.clone()))
+                    || Self::is_subtree(a.borrow().right.clone(), Some(b.clone()))
+            }
         }
     }
     pub fn is_subtree_check(
@@ -45,17 +47,12 @@ impl Solution {
         match (a, b) {
             (None, None) => true,
             (Some(_), None) | (None, Some(_)) => false,
-            (Some(n1), Some(n2)) => {
-                let (b1, b2) = (n1.borrow(), n2.borrow());
-                if b1.val == b2.val {
-                    Self::is_subtree_check(b1.left.clone(), b2.left.clone())
-                        && Self::is_subtree_check(b1.right.clone(), b2.right.clone())
-                } else {
-                    false
-                }
+            (Some(a), Some(b)) => {
+                a.borrow().val == b.borrow().val
+                    && Self::is_subtree_check(a.borrow().left.clone(), b.borrow().left.clone())
+                    && Self::is_subtree_check(a.borrow().right.clone(), b.borrow().right.clone())
             }
         }
     }
 }
 // @lc code=end
-

@@ -23,16 +23,15 @@
 // }
 impl Solution {
     pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut pre = None;
+        let mut prev: Option<Box<ListNode>> = None;
         let mut node = head;
         while let Some(mut n) = node {
-            let tmp = n.next.take();
-            n.next = pre;
-            pre = Some(n);
-            node = tmp;
+            let next = n.next.take();
+            n.next = prev;
+            prev = Some(n);
+            node = next;
         }
-        pre
+        prev
     }
 }
 // @lc code=end
-
