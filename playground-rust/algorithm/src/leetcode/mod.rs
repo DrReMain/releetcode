@@ -34,3 +34,4 @@ pub mod n64;
 pub mod n695;
 pub mod n82;
 pub mod n88;
+pub mod LCR024;
