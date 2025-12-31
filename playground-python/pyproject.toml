@@ -1,0 +1,30 @@
+[project]
+name = "releetcode"
+version = "0.1.0"
+description = "A modern Python playground for LeetCode exercises"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "shijiao" }
+]
+dependencies = [
+    "pytest>=7.0.0",
+    "pytest-benchmark>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "benchmarks"]
+pythonpath = ["src"]
